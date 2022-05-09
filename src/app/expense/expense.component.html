@@ -1,0 +1,74 @@
+
+<div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex="20">
+      <mat-toolbar color="primary">Expense Page</mat-toolbar>
+      <form fxLayoutAlign= "stretch" fxLayout="column">
+
+        <br/>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Expense Type</mat-label>
+          <mat-select [(ngModel)]="expense" name="expense">
+            <mat-option value="Select expense">Select expense</mat-option>
+            <mat-option value="Classroom supplies">Classroom supplies</mat-option>
+            <mat-option value="Food">Food</mat-option>
+            <mat-option value="Utilities">Utilities</mat-option>
+            <mat-option value="Outdoor Equipment">Outdoor Equipment</mat-option>
+            <mat-option value="Office Supplies">Office Supplies</mat-option>
+            <mat-option value="Building">Building</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>        
+        </mat-form-field>
+
+        <br/>
+
+        <mat-form-field appearance="fill" >
+          <mat-label>Amount</mat-label> 
+            <input [(ngModel)]="amount" name="amount" value="amount" matInput placeholder="00.00" >
+        </mat-form-field> 
+        
+        
+        <br/>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Date</mat-label>
+          <input [(ngModel)]="date" name="date" value="date" matInput placeholder="mm/dd/yyyy" >
+        </mat-form-field>
+
+        <br/>
+
+        <mat-form-field appearance="fill" >
+         <mat-label>Description</mat-label> 
+           <input [(ngModel)]="description" name="description" value="description" matInput placeholder="Ex. Groceries from Schnucks" >
+       </mat-form-field> 
+
+        <br/>
+        <button mat-raised-button (click)="addEntry()">Enter</button>
+        <button mat-raised-button (click)="goToPage('home')">Back</button>
+        <br/>
+
+      
+      </form>
+    </mat-card>
+    <h3 class="p-3 text-center"></h3>
+    <div class="container box" style="marign-top:10px;">
+        <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th>Expense</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                </tr>
+              </thead>
+            <tbody>
+                <tr *ngFor="let entry of Expenses ">
+                  <th scope="row"></th>
+                    <td>{{entry.expense}}</td>
+                    <td>{{entry.amount}}</td>
+                    <td>{{entry.date}}</td>
+                    <td>{{entry.description}}</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
